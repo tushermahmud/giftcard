@@ -5,7 +5,6 @@ import {
   createSignature,
   gamelovHeaderDate,
   getPrimitiveValues,
-  getQueries,
   tokenExists,
 } from "../helpers/helper";
 
@@ -63,16 +62,14 @@ export const checkToken = async (req: Request, res: Response) => {
     });
   }
   try {
-    const queries = req.body;
-    const joinedQuery = getPrimitiveValues(queries);
-    console.log(joinedQuery);
+    const reqBody = req.body;
     const xGiftlovDate = gamelovHeaderDate(new Date());
     const path = req.path.split("/")[1];
     const method = req.method.toUpperCase();
     const signature = createSignature(
       path,
       method,
-      joinedQuery,
+      reqBody,
       token,
       xGiftlovDate
     );

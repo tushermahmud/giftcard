@@ -30,20 +30,38 @@ export type CatalogueItem = {
   cardFaceImage: string;
   giftCardInformation: string;
   value: number;
+  fromValue: number;
+  toValue: number;
 };
 
 export type Order = {
-    customerName: string,
-    firstName: string,
-    lastName: string,
-    referenceNo: string,
-    deliveryChannel: string,
-    contactNumber: string,
-    smsMobileNumber: string,
-    emailAddress: string,
-    additionalParameters: Record<string, never>,
-    countryCode: string,
-    languageCode: string,
-    orderDate: string,
-    lineItems: CatalogueItem[]
-  }
+  id?: string;
+  customerName: string;
+  firstName: string;
+  lastName: string;
+  referenceNo: string;
+  deliveryChannel: string;
+  contactNumber: string;
+  smsMobileNumber: string;
+  currency: string;
+  emailAddress: string;
+  additionalParameters: Record<string, never>;
+  countryCode: string;
+  languageCode: string;
+  orderDate: string;
+  lineItems: OrderPlaceItem[];
+};
+
+export type OrderPlaceItem = {
+  cardItemId: string;
+  value: number;
+  lineNumber?: number;
+  status?: string;
+  statusDescription?: string;
+  currency:string;
+  claimURL?: string;
+  settlementCurrency?: string;
+  exchangeRate?: string;
+  settlementPrice?: string;
+  netPrice?: string;
+};
