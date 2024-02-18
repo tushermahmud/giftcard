@@ -1,15 +1,24 @@
 
-## Installation
-
+## Cloning the project
 ```bash
-$ npm install
+$ git clone https://github.com/tushermahmud/giftcard.git
+```
+## Installation
+# Go to client folder and run 
+```bash
+$ cd client && npm install
+
+```
+# Go back to  
+```bash
+$ cd ..&&npm install
+
 ```
 
 ## Running the app
 
 ```bash
-# development
-$ npm run start
+$ npm start
 
 ```
 
@@ -24,9 +33,10 @@ curl http://localhost:3000/user/getUser/65b17e64d40d6a525cf7398d
 ```
 
 ### Technologies user
-# Node JS
+# React JS
 # Express JS server
-# Typescript
-# Mongoose
-# MongoDB
+# Node JS
+# TypeScript
+# Tailwind CSS
+# Context API
 

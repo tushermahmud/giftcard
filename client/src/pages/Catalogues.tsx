@@ -16,7 +16,7 @@ const Catalogues: React.FC = () => {
     })
   },[authToken])
   return (
-    <div className="grid grid-cols-3 gap-4 mx-4 my-10">
+    <div className="grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-4 mx-4 my-10">
       {catalogues && catalogues.map((catalogue)=>{
         return <Catalogue key={catalogue.id} item={catalogue}/>
       })}

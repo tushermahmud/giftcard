@@ -1,7 +1,7 @@
-import { Order, OrderPlaceItem } from "../types/types";
+import { Order as OrderType, OrderPlaceItem } from "../types/types";
 
 export type Props = {
-  order: Order;
+  order: OrderType;
 };
 const Order = ({ order }: Props) => {
   return (
@@ -16,7 +16,7 @@ const Order = ({ order }: Props) => {
           </div>
           {order.lineItems &&
             order.lineItems.map((item: OrderPlaceItem) => (
-              <div className="bg-gray-300 w-full my-5 p-5 rounded-lg">
+              <div className="bg-gray-300 w-full my-5 p-5 rounded-lg" key={item.cardItemId}>
                 <div className="pb-4 md:pb-8 w-full">
                   <p>{item.cardItemId}</p>
                 </div>

@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/app.ts",
-    "test": "jest"
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "start:backend": "nodemon src/app.ts",
+    "start:frontend": "cd client && npm run dev"
   },
   "keywords": [],
   "author": "",
@@ -39,6 +40,7 @@
     "@types/morgan": "^1.9.9",
     "@types/nodemailer": "^6.4.14",
     "@types/supertest": "^6.0.2",
+    "concurrently": "^8.2.2",
     "jest": "^29.7.0",
     "nodemon": "^3.0.3",
     "supertest": "^6.3.4"

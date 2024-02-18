@@ -1,0 +1,267 @@
+{
+	"info": {
+		"_postman_id": "ab8b9a35-8c46-478a-b7a3-e7cffb106a1c",
+		"name": "newone",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "X-GIFTLOV-DATE",
+						"value": "d",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"coding_challenge_1\",\r\n  \"password\" : \"coding_challenge_1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getOrders",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJNdW5lcm8iLCJleHAiOjE3MDgyNzQxNzgsInR5cGUiOiJBdXRob3JpemF0aW9uVG9rZW4iLCJjcmVhdGlvbkRhdGUiOjE3MDgxODc3NzgsInVzZXJJZCI6MTEzLCJ2ZXJzaW9uIjoxfQ.2dFdQQ0rmBr8WIbXT-wK_9XOV428h7ULRYp73HFe3oI",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/catalogue/items?current=1&&rowCount=100&&lang=EN",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"catalogue",
+						"items"
+					],
+					"query": [
+						{
+							"key": "current",
+							"value": "1"
+						},
+						{
+							"key": null,
+							"value": null
+						},
+						{
+							"key": "rowCount",
+							"value": "100"
+						},
+						{
+							"key": null,
+							"value": null
+						},
+						{
+							"key": "lang",
+							"value": "EN"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "checkToken",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJNdW5lcm8iLCJleHAiOjE3MDgyNzY3NTAsInR5cGUiOiJBdXRob3JpemF0aW9uVG9rZW4iLCJjcmVhdGlvbkRhdGUiOjE3MDgxOTAzNTAsInVzZXJJZCI6MTEzLCJ2ZXJzaW9uIjoxfQ.UUcJZUynqNzGx-XTwXHqIeFQTUjxJ7h4hTqlMiRb1PY",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/user/checkToken",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"user",
+						"checkToken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PlaceOrder",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJNdW5lcm8iLCJleHAiOjE3MDgyNzQxNzgsInR5cGUiOiJBdXRob3JpemF0aW9uVG9rZW4iLCJjcmVhdGlvbkRhdGUiOjE3MDgxODc3NzgsInVzZXJJZCI6MTEzLCJ2ZXJzaW9uIjoxfQ.2dFdQQ0rmBr8WIbXT-wK_9XOV428h7ULRYp73HFe3oI",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customerName\": \"Mohammed Riyad El Khoudary\",\r\n    \"firstName\": \"Mohamme\",\r\n    \"lastName\": \"El Khoudary\",\r\n    \"referenceNo\": \"MY-REF-NO-008\",\r\n    \"deliveryChannel\": \"api\",\r\n    \"contactNumber\": \"+972599409858\",\r\n    \"smsMobileNumber\": \"+972599409858\",\r\n    \"emailAddress\": \"techie@munero.net\",\r\n    \"additionalParameters\": {},\r\n    \"countryCode\": \"AE\",\r\n    \"languageCode\": \"EN\",\r\n    \"orderDate\": \"2022-05-15\",\r\n    \"lineItems\": [{\"cardItemId\": \"AE-Test-1-1000-1253\", \"value\": 1000}]\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/order/placeOrder",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"order",
+						"placeOrder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getOrders",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJNdW5lcm8iLCJleHAiOjE3MDgzMzIwNDgsInR5cGUiOiJBdXRob3JpemF0aW9uVG9rZW4iLCJjcmVhdGlvbkRhdGUiOjE3MDgyNDU2NDgsInVzZXJJZCI6MTEzLCJ2ZXJzaW9uIjoxfQ.RI4jTeEnSoKDweNTxfXR5WsBHh5A1MTzGe4V69T_zoE",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/orders/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"orders",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCatalogues",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJNdW5lcm8iLCJleHAiOjE3MDgzMzIwNDgsInR5cGUiOiJBdXRob3JpemF0aW9uVG9rZW4iLCJjcmVhdGlvbkRhdGUiOjE3MDgyNDU2NDgsInVzZXJJZCI6MTEzLCJ2ZXJzaW9uIjoxfQ.RI4jTeEnSoKDweNTxfXR5WsBHh5A1MTzGe4V69T_zoE",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/catalogue/items?current=1&&rowCount=100&&lang=EN",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"catalogue",
+						"items"
+					],
+					"query": [
+						{
+							"key": "current",
+							"value": "1"
+						},
+						{
+							"key": null,
+							"value": null
+						},
+						{
+							"key": "rowCount",
+							"value": "100"
+						},
+						{
+							"key": null,
+							"value": null
+						},
+						{
+							"key": "lang",
+							"value": "EN"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
