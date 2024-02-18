@@ -1,6 +1,6 @@
 //import User from "../modals/User";
 import { Request, Response } from "express";
-import { createSignature, gamelovHeaderDate, getQueries, tokenExists } from "../helpers/helper";
+import { createSignatureForGet, gamelovHeaderDate, tokenExists } from "../helpers/helper";
 import axios from "axios";
 
 export const getCatalogues = async (req: Request, res: Response) => {
@@ -11,11 +11,10 @@ export const getCatalogues = async (req: Request, res: Response) => {
     });
   }
   const queries = req.query;
-  const joinedQuery = getQueries(Object.values(queries));
   const xGiftlovDate = gamelovHeaderDate(new Date());
   const path = req.path.split("/")[1];
   const method = req.method.toUpperCase();
-  const signature = createSignature(path, method, joinedQuery, token as string, xGiftlovDate)
+  const signature = createSignatureForGet(path, method, queries, token as string, xGiftlovDate)
   
     const options = {
       method: method,

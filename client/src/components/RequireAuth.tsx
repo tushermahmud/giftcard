@@ -6,8 +6,6 @@ type Props = {
 const RequireAuth: React.FC<Props> = () => {
   const location = useLocation();
   const { user } = useAuth();
-  console.log(user);
-
   return  user ? (
     <Outlet />
   ) : (

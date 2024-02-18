@@ -1,6 +1,7 @@
 import React, { createContext, useState } from "react";
 import { User } from "../types/types";
 import axios from "axios";
+import { toast } from "react-toastify";
 interface UserContextProps {
   user: User | null;
   authToken: string | null;
@@ -27,8 +28,6 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
     JSON.parse(localStorage.getItem("authToken") || "null")
   );
 
-  console.log(authToken);
-
   const login = async (userData: User) => {
     try {
       const { data } = await axios.post(
@@ -45,8 +44,8 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
       localStorage.setItem("user", JSON.stringify(data.data));
       setAuthToken(data.data.token);
       localStorage.setItem("authToken", JSON.stringify(data.data.token));
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      toast.error(error.response.data.error);
     }
   };
 

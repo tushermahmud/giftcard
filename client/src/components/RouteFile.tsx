@@ -1,11 +1,10 @@
 import React, { Fragment } from "react";
-import UserDashboard from "../pages/UserDashboard";
 import Login from "../pages/Login";
 import { Route, Routes } from "react-router-dom";
 import Layout from "../Layouts/Layout";
 import RequireAuth from "./RequireAuth";
-import Unauthorized from "./Unauthorized";
-import Catalogues from "../pages/Catalogues ";
+import Catalogues from "../pages/Catalogues";
+import Orders from "../pages/Orders";
 
 const RouteFile: React.FC = () => {
   return (
@@ -14,9 +13,9 @@ const RouteFile: React.FC = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<RequireAuth />}>
           <Route element={<Layout />}>
+            <Route index element={<Catalogues />} />
             <Route path="catalogue" element={<Catalogues  />} />
-            {/* <Route path="userdashboard" element={<UserDashboard />} />
-            <Route path="unauthorized" element={<Unauthorized />} /> */}
+            <Route path="orders" element={<Orders  />} />
           </Route>
         </Route>
       </Routes>

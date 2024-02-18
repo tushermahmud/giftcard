@@ -18,13 +18,24 @@ export const gamelovHeaderDate = (date: Date): string => {
 }
 
 export const tokenExists = (token: string | undefined): boolean | string => {
-  console.log(token)
   return token? token: false;
 }
 
-export const createSignature = (path: string, method: string, queries?: any, token?: string | boolean, xGiftlovDate?: string): string => {
-  const preSignatureString = `${path}${method}${queries}${xGiftlovDate}${token}`;
-  console.log(preSignatureString)
+export const createSignatureForGet = (path: string, method: string, queries?: any, token?: string | boolean, xGiftlovDate?: string): string => {
+  const joinedQuery = getQueries(Object.values(queries));
+  console.log(joinedQuery)
+  const preSignatureString = `${path}${method}${joinedQuery}${xGiftlovDate}${token}`;
+  const signature = crypto
+    .createHmac("sha512", process.env.GIFTLOVAPI_SECRET as string)
+    .update(preSignatureString)
+    .digest("hex");
+  return signature;
+}
+
+export const createSignature = (path: string, method: string, reqbody?: any, token?: string | boolean, xGiftlovDate?: string): string => {
+  const joinedQuery = getPrimitiveValues(reqbody);
+  const sortedAndConcatenated = sortAndConcatenate(joinedQuery);
+  const preSignatureString = `${path}${method}${sortedAndConcatenated}${xGiftlovDate}${token}`;
   const signature = crypto
     .createHmac("sha512", process.env.GIFTLOVAPI_SECRET as string)
     .update(preSignatureString)
