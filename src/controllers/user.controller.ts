@@ -1,7 +1,13 @@
 import { Request, Response } from "express";
 import { validationResult } from "express-validator";
 import axios from "axios";
-import { createSignature, gamelovHeaderDate, getPrimitiveValues, getQueries, tokenExists } from "../helpers/helper";
+import {
+  createSignature,
+  gamelovHeaderDate,
+  getPrimitiveValues,
+  getQueries,
+  tokenExists,
+} from "../helpers/helper";
 
 export const login = async (req: Request, res: Response) => {
   const errors = validationResult(req);
@@ -33,17 +39,16 @@ export const login = async (req: Request, res: Response) => {
       data: giftlovData,
     };
     const { data } = await axios.request(options);
-
     res.status(200).json({
       message: "Login successful",
       data,
     });
-  } catch (errors:any) {
+  } catch (errors: any) {
     if (errors.response) {
       const { status, data } = errors.response;
       return res.status(status).json({
-        error: data.message
-    });
+        error: data.message,
+      });
     } else {
       return res.status(500).json({ error: "Network Error!" });
     }
@@ -60,11 +65,17 @@ export const checkToken = async (req: Request, res: Response) => {
   try {
     const queries = req.body;
     const joinedQuery = getPrimitiveValues(queries);
-    console.log(joinedQuery)
+    console.log(joinedQuery);
     const xGiftlovDate = gamelovHeaderDate(new Date());
     const path = req.path.split("/")[1];
     const method = req.method.toUpperCase();
-    const signature = createSignature(path, method, joinedQuery, token, xGiftlovDate)
+    const signature = createSignature(
+      path,
+      method,
+      joinedQuery,
+      token,
+      xGiftlovDate
+    );
 
     const options = {
       method: method,
@@ -86,8 +97,8 @@ export const checkToken = async (req: Request, res: Response) => {
     if (error.response) {
       const { status, data } = error.response;
       return res.status(status).json({
-        error: data.message
-    });
+        error: data.message,
+      });
     } else {
       return res.status(500).json({ error: "Network Error!" });
     }

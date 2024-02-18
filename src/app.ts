@@ -12,7 +12,11 @@ const PORT = 4000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
-app.use(cors());
+const corsOptions = {
+  origin: 'http://localhost:5173', // Allow only this origin to send requests with credentials
+  credentials: true, // Allow credentials
+};
+app.use(cors(corsOptions));
 
 app.use("/user", userRoutes);
 app.use("/catalogue", catalogueRoutes);

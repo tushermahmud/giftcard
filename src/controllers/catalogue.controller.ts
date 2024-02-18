@@ -2,6 +2,7 @@
 import { Request, Response } from "express";
 import { createSignature, gamelovHeaderDate, getQueries, tokenExists } from "../helpers/helper";
 import axios from "axios";
+
 export const getCatalogues = async (req: Request, res: Response) => {
   const token = tokenExists(req.headers["token"] as string);
   if (!token) {
