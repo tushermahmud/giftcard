@@ -6,23 +6,6 @@ export type User = {
   password: string;
 };
 
-export enum UserType {
-  ADMIN = "admin",
-  USER = "user",
-}
-
-export type Question = {
-  id: number;
-  question: string;
-  answer: string;
-  options: string[];
-};
-
-export type Answer = {
-  questionId: number;
-  answer: string;
-};
-
 export type CatalogueItem = {
   cardItemId: string;
   id: string;

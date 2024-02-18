@@ -23,7 +23,6 @@ export const tokenExists = (token: string | undefined): boolean | string => {
 
 export const createSignatureForGet = (path: string, method: string, queries?: any, token?: string | boolean, xGiftlovDate?: string): string => {
   const joinedQuery = getQueries(Object.values(queries));
-  console.log(joinedQuery)
   const preSignatureString = `${path}${method}${joinedQuery}${xGiftlovDate}${token}`;
   const signature = crypto
     .createHmac("sha512", process.env.GIFTLOVAPI_SECRET as string)
