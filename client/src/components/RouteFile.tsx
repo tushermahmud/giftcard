@@ -5,7 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import Layout from "../Layouts/Layout";
 import RequireAuth from "./RequireAuth";
 import Unauthorized from "./Unauthorized";
-import Catalogue from "../pages/Catalogue ";
+import Catalogues from "../pages/Catalogues ";
 
 const RouteFile: React.FC = () => {
   return (
@@ -14,9 +14,9 @@ const RouteFile: React.FC = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<RequireAuth />}>
           <Route element={<Layout />}>
-            <Route path="catalogue" element={<Catalogue  />} />
-            <Route path="userdashboard" element={<UserDashboard />} />
-            <Route path="unauthorized" element={<Unauthorized />} />
+            <Route path="catalogue" element={<Catalogues  />} />
+            {/* <Route path="userdashboard" element={<UserDashboard />} />
+            <Route path="unauthorized" element={<Unauthorized />} /> */}
           </Route>
         </Route>
       </Routes>
