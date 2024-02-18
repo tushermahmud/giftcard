@@ -22,8 +22,8 @@ const Order = ({ order }: Props) => {
                 </div>
                 <div className="border-b border-gray-200 md:flex-row flex-col flex justify-between items-start w-full  pb-8 space-y-4 md:space-y-0">
                   <div className="w-full flex flex-col justify-start items-start space-y-8">
-                    <a className="text-base xl:text-base font-semibold leading-6 text-gray-800" href={item.claimURL}>
-                      {item.claimURL}
+                    <a className="text-base xl:text-base font-semibold leading-2 px-5 py-1 bg-[#6366f1] text-white rounded-lg" href={item.claimURL}>
+                      Claim
                     </a>
                     <div className="flex justify-start items-start gap-2">
                       <span className="text-sm leading-none text-gray-800">
