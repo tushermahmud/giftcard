@@ -6,23 +6,6 @@ export type User = {
   password: string;
 };
 
-export enum UserType {
-  ADMIN = "admin",
-  USER = "user",
-}
-
-export type Question = {
-  id: number;
-  question: string;
-  answer: string;
-  options: string[];
-};
-
-export type Answer = {
-  questionId: number;
-  answer: string;
-};
-
 export type CatalogueItem = {
   cardItemId: string;
   id: string;
@@ -43,7 +26,7 @@ export type Order = {
   deliveryChannel: string;
   contactNumber: string;
   smsMobileNumber: string;
-  currency: string;
+  currency?: string;
   emailAddress: string;
   additionalParameters: Record<string, never>;
   countryCode: string;
@@ -58,7 +41,7 @@ export type OrderPlaceItem = {
   lineNumber?: number;
   status?: string;
   statusDescription?: string;
-  currency:string;
+  currency?:string;
   claimURL?: string;
   settlementCurrency?: string;
   exchangeRate?: string;

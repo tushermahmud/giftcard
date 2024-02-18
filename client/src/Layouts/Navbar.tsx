@@ -1,17 +1,16 @@
 import React, { Fragment } from "react";
 import useAuth from "../hooks/useAuth";
 import { Link } from "react-router-dom";
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 const Navbar: React.FC = () => {
-  
   const navigation = [
-    { name: 'Catalogues', href: '/catalogue', current: true },
-    { name: 'Orders', href: '/orders', current: false },
-  ]
-  
+    { name: "Catalogues", href: "/catalogue", current: true },
+    { name: "Orders", href: "/orders", current: false },
+  ];
+
   function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
+    return classes.filter(Boolean).join(" ");
   }
   const { logout } = useAuth();
   return (
@@ -42,14 +41,14 @@ const Navbar: React.FC = () => {
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
-                    {navigation.map((item) => (
-                      
-                      <Link
-          to={item.href}
-          className="cursor-pointer text-white bg-gray-600 p-2 rounded-md my-5 table"
-        >
-          {item.name}
-        </Link>
+                    {navigation.map((item, index) => (
+                      <Link 
+                        key={index}
+                        to={item.href}
+                        className="cursor-pointer text-white bg-gray-600 p-2 rounded-md my-5 table"
+                      >
+                        {item.name}
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -87,12 +86,14 @@ const Navbar: React.FC = () => {
                     leaveTo="transform opacity-0 scale-95"
                   >
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      
                       <Menu.Item>
                         {({ active }) => (
                           <a
                             onClick={logout}
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
                           >
                             Sign out
                           </a>
@@ -113,10 +114,12 @@ const Navbar: React.FC = () => {
                   as="a"
                   href={item.href}
                   className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block rounded-md px-3 py-2 text-base font-medium'
+                    item.current
+                      ? "bg-gray-900 text-white"
+                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                    "block rounded-md px-3 py-2 text-base font-medium"
                   )}
-                  aria-current={item.current ? 'page' : undefined}
+                  aria-current={item.current ? "page" : undefined}
                 >
                   {item.name}
                 </Disclosure.Button>
@@ -126,12 +129,12 @@ const Navbar: React.FC = () => {
         </>
       )}
     </Disclosure>
-   
   );
 };
 
 export default Navbar;
- {/* <Fragment>
+{
+  /* <Fragment>
         <Link
           to={"/dashboard"}
           className="cursor-pointer text-white bg-gray-600 p-2 rounded-md my-5 table"
@@ -159,4 +162,5 @@ export default Navbar;
           Login
         </Link>
       )}
-    </Fragment> */}
+    </Fragment> */
+}
